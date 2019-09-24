@@ -1,0 +1,42 @@
+@import "../../resource/default.module.less";
+
+@default-background-image: url(../../resource/bgimage.jpg) center center / cover no-repeat;
+
+.whole {
+  display: flex;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background: @default-background-image;
+
+  .container {
+    display: flex;
+    flex: 1;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 100em;
+
+    >div {
+      z-index: 1;
+      padding: 3em 2em;
+    }
+  }
+}
+
+.whole:before {
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background: @default-background-image;
+  filter: blur(1em);
+}

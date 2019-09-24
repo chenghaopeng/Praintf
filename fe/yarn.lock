@@ -1240,6 +1240,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-icons@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/@types/react-icons/download/@types/react-icons-3.0.0.tgz#27ca2823a6add881d06a371bfff093afc1b9c829"
+  integrity sha1-J8ooI6at2IHQajcb//CTr8G5yCk=
+  dependencies:
+    react-icons "*"
+
 "@types/react-router-dom@^4.3.5":
   version "4.3.5"
   resolved "https://registry.npm.taobao.org/@types/react-router-dom/download/@types/react-router-dom-4.3.5.tgz#72f229967690c890d00f96e6b85e9ee5780db31f"
@@ -8882,6 +8889,13 @@ react-error-overlay@^6.0.2:
   version "6.0.2"
   resolved "https://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-6.0.2.tgz?cache=0&sync_timestamp=1568915544375&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-error-overlay%2Fdownload%2Freact-error-overlay-6.0.2.tgz#642bd6157c6a4b6e9ca4a816f7ed30b868c47f81"
   integrity sha1-ZCvWFXxqS26cpKgW9+0wuGjEf4E=
+
+react-icons@*, react-icons@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.npm.taobao.org/react-icons/download/react-icons-3.7.0.tgz#64fe46231fabfeea27895edeae6c3b78114b8c8f"
+  integrity sha1-ZP5GIx+r/uoniV7ermw7eBFLjI8=
+  dependencies:
+    camelcase "^5.0.0"
 
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.9.0"
