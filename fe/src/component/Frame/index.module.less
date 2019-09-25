@@ -20,13 +20,16 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-
-    max-width: 100em;
+    max-height: 100%;
+    overflow-y: scroll;
 
     >div {
       z-index: 1;
-      padding: 3em 2em;
     }
+  }
+
+  .container::-webkit-scrollbar {
+    display: none;
   }
 }
 

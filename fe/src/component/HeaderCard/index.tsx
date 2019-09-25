@@ -45,7 +45,7 @@ function Icons() {
 
 export default function HeaderCard() {
   return (
-    <div className={styles.whole}>
+    <div className={`${styles.whole} ${styles.defaultBox}`}>
       <Avatar src={avatar} style={{height: "8em", width: "8em"}}/>
       <div className={styles.title}>
         Chaop
