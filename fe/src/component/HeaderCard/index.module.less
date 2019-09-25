@@ -1,0 +1,40 @@
+@import "../../resource/default.module.less";
+
+.whole {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  .title {
+    margin-top: .5em;
+    font-size: 2em;
+  }
+
+  .icons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 1em;
+
+    max-width: 500px;
+
+    .icon {
+      width: 2.8em;
+      height: 2.8em;
+      padding: .2em;
+      margin: .2em;
+      border: .15em solid;
+      border-radius: 1.4em;
+      cursor: pointer;
+      transition: @default-transition;
+    }
+
+    .icon:hover {
+      background-color: rgba(255, 255, 255, .3);
+      box-shadow: 0 0 1em -.3em rgba(0, 0, 0, .5);
+    }
+  }
+}
