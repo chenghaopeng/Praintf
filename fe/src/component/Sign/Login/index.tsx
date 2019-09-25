@@ -1,5 +1,5 @@
 import React, { FormEvent } from "react";
-import styles from "./index.module.less";
+import styles from "../index.module.less";
 
 import { Form, Icon, Input, Button, Row, Col } from 'antd';
 import { FormComponentProps } from "antd/lib/form";
