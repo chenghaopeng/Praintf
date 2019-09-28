@@ -8,7 +8,7 @@ export default function SessionCard() {
   return (
     <div className={`${styles.whole} ${styles.defaultBox}`}>
       <Login/>
-      <Register/>
+      {/* <Register/> */}
     </div>
   );
 }

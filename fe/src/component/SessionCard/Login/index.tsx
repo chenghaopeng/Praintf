@@ -3,8 +3,16 @@ import styles from "../index.module.less";
 
 import { Form, Icon, Input, Button, Row, Col } from 'antd';
 import { FormComponentProps } from "antd/lib/form";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
-class Login extends React.Component<FormComponentProps, any> {
+import { loginAction } from "../../../action/SessionAction";
+
+interface LoginProps {
+  loginAction: Function,
+}
+
+class Login extends React.Component<FormComponentProps & LoginProps, any> {
   formSize = {
     inline: {
       username: {span: 7, offset: 0},
@@ -22,7 +30,8 @@ class Login extends React.Component<FormComponentProps, any> {
 
   handleSubmit = (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+    const values = this.props.form.getFieldsValue();
+    this.props.loginAction({username: values.username, password: values.password});
   }
 
   render() {
@@ -64,4 +73,14 @@ class Login extends React.Component<FormComponentProps, any> {
   }
 }
 
-export default Form.create()(Login);
+const mapStateToProps = (state : any) => {
+  return {};
+}
+
+const mapDispatchToProps = (dispatch : any) => {
+  return {
+    loginAction: bindActionCreators(loginAction, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(Login));
