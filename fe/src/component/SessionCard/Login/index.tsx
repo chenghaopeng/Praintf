@@ -6,10 +6,11 @@ import { FormComponentProps } from "antd/lib/form";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { loginAction } from "../../../action/SessionAction";
+import { loginAction, toRegister } from "../../../action/SessionAction";
 
 interface LoginProps {
   loginAction: Function,
+  toRegister: Function,
 }
 
 class Login extends React.Component<FormComponentProps & LoginProps, any> {
@@ -62,7 +63,7 @@ class Login extends React.Component<FormComponentProps & LoginProps, any> {
           </Col>
           <Col xs={this.formSize.inline.register} sm={this.formSize.inline.register} md={this.formSize.wrap.register} xxl={this.formSize.inline.register}>
             <Form.Item className={styles.formItem}>
-              <Button>
+              <Button onClick={() => {this.props.toRegister()}}>
                 注册
               </Button>
             </Form.Item>
@@ -80,6 +81,7 @@ const mapStateToProps = (state : any) => {
 const mapDispatchToProps = (dispatch : any) => {
   return {
     loginAction: bindActionCreators(loginAction, dispatch),
+    toRegister: bindActionCreators(toRegister, dispatch),
   };
 }
 

@@ -8,3 +8,15 @@ export const loginAction = (body : SessionAPI.loginBody) => async (dispatch : Fu
     payload: res.data,
   });
 }
+
+export const toLogin = () => (dispatch : Function) => {
+  dispatch({
+    type: SessionType.TOLOGIN,
+  });
+}
+
+export const toRegister = () => (dispatch : Function) => {
+  dispatch({
+    type: SessionType.TOREGISTER,
+  });
+}
