@@ -1,10 +1,19 @@
 import React, { FormEvent } from "react";
 import styles from "../index.module.less";
 
-import { Form, Icon, Input, Button, Row, Col } from 'antd';
+import { Form, Icon, Input, Button, Row, Col, message } from 'antd';
 import { FormComponentProps } from "antd/lib/form";
 
-class Register extends React.Component<FormComponentProps, any> {
+import { registerAction, toLogin } from "../../../action/SessionAction";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+interface RegisterProps {
+  registerAction: Function,
+  toLogin: Function,
+}
+
+class Register extends React.Component<FormComponentProps & RegisterProps, any> {
   formSize = {
     inline: {
       username: {span: 7, offset: 0},
@@ -28,7 +37,22 @@ class Register extends React.Component<FormComponentProps, any> {
 
   handleSubmit = (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+    const values = this.props.form.getFieldsValue();
+    if (!values.username || !values.nickname || !values.mail || !values.password || !values.repeat) {
+      message.error("请完整输入所有信息！");
+    }
+    else if (values.password !== values.repeat) {
+      message.error("两次密码输入不一致！");
+    }
+    else {
+      const body = {
+        username: values.username,
+        nickname: values.nickname,
+        mail: values.mail,
+        password: values.password,
+      };
+      this.props.registerAction(body);
+    }
   }
 
   render() {
@@ -80,7 +104,7 @@ class Register extends React.Component<FormComponentProps, any> {
           </Col>
           <Col xs={this.formSize.inline.login} sm={this.formSize.inline.login} md={this.formSize.wrap.login} xxl={this.formSize.inline.login}>
             <Form.Item className={styles.formItem}>
-              <Button>
+              <Button onClick={() => this.props.toLogin()}>
                 登录
               </Button>
             </Form.Item>
@@ -91,4 +115,15 @@ class Register extends React.Component<FormComponentProps, any> {
   }
 }
 
-export default Form.create()(Register);
+const mapStateToProps = (state : any) => {
+  return {};
+}
+
+const mapDispatchToProps = (dispatch : any) => {
+  return {
+    registerAction: bindActionCreators(registerAction, dispatch),
+    toLogin: bindActionCreators(toLogin, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(Register));

@@ -1,7 +1,7 @@
 import React, { FormEvent } from "react";
 import styles from "../index.module.less";
 
-import { Form, Icon, Input, Button, Row, Col } from 'antd';
+import { Form, Icon, Input, Button, Row, Col, message } from 'antd';
 import { FormComponentProps } from "antd/lib/form";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -32,7 +32,12 @@ class Login extends React.Component<FormComponentProps & LoginProps, any> {
   handleSubmit = (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const values = this.props.form.getFieldsValue();
-    this.props.loginAction({username: values.username, password: values.password});
+    if (!values.username || !values.password) {
+      message.error("请输入用户名和密码！");
+    }
+    else {
+      this.props.loginAction({username: values.username, password: values.password});
+    }
   }
 
   render() {
@@ -63,7 +68,7 @@ class Login extends React.Component<FormComponentProps & LoginProps, any> {
           </Col>
           <Col xs={this.formSize.inline.register} sm={this.formSize.inline.register} md={this.formSize.wrap.register} xxl={this.formSize.inline.register}>
             <Form.Item className={styles.formItem}>
-              <Button onClick={() => {this.props.toRegister()}}>
+              <Button onClick={() => this.props.toRegister()}>
                 注册
               </Button>
             </Form.Item>
