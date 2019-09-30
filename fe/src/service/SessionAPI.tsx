@@ -1,18 +1,22 @@
 import { Get, Post } from "../utiliy/request";
 
-export interface loginBody {
+interface loginBody {
   username : string,
   password : string,
 }
 
-export interface registerBody {
+interface registerBody {
   username : string,
   nickname : string,
   mail : string,
   password : string,
 }
 
-export interface logoutBody {
+interface logoutBody {
+  token: string,
+}
+
+interface checkBody {
   token: string,
 }
 
@@ -26,4 +30,8 @@ export function register(body : registerBody) {
 
 export function logout(body : logoutBody) {
   return Post("/session/logout", body);
+}
+
+export function check(body : checkBody) {
+  return Post("/session/check", body);
 }

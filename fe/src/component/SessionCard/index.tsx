@@ -4,6 +4,7 @@ import styles from "./index.module.less";
 import store from "../../store";
 import Login from "./Login";
 import Register from "./Register";
+import Hello from "./Hello";
 
 interface SessionCardState {
   loged: number,
@@ -27,7 +28,7 @@ class SessionCard extends React.Component<any, SessionCardState> {
   render(){
     return (
       <div className={`${styles.whole} ${styles.defaultBox}`}>
-        {this.state.loged === 0 ? <Login/> : <Register/>}
+        {this.state.loged === 0 ? <Login/> : this.state.loged === -1 ? <Register/> : <Hello/>}
       </div>
     );
   }

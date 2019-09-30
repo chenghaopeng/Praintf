@@ -7,6 +7,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import { loginAction, toRegister } from "../../../action/SessionAction";
+import * as SessionAPI from "../../../service/SessionAPI";
 
 interface LoginProps {
   loginAction: Function,
@@ -29,14 +30,36 @@ class Login extends React.Component<FormComponentProps & LoginProps, any> {
     },
   };
 
-  handleSubmit = (e : FormEvent<HTMLFormElement>) => {
+  async componentWillMount() {
+    if (window.localStorage.session) {
+      const storedSession = JSON.parse(window.localStorage.session);
+      window.localStorage.removeItem("session");
+      if (storedSession.token) {
+        const res = await SessionAPI.check({token: storedSession.token});
+        if (res.code === 0) {
+          this.props.loginAction(res.data);
+        }
+      }
+    }
+  }
+
+  handleSubmit = async (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const values = this.props.form.getFieldsValue();
     if (!values.username || !values.password) {
       message.error("请输入用户名和密码！");
     }
     else {
-      this.props.loginAction({username: values.username, password: values.password});
+      const hide = message.loading("正在登录...", 0);
+      const res = await SessionAPI.login({username: values.username, password: values.password});
+      hide();
+      if (res.code === 0) {
+        this.props.loginAction(res.data);
+        message.success(res.data.nickname + "，欢迎回来！");
+      }
+      else {
+        message.error("用户名或密码错误！");
+      }
     }
   }
 

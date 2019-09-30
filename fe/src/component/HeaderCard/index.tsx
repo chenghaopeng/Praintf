@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./index.module.less";
 import { Avatar, Tooltip } from "antd";
-import { TiSocialGithub, TiLocation, TiMail, TiMessages, TiBusinessCard} from "react-icons/ti";
+import { TiLocation, TiMail, TiMessages, TiBusinessCard} from "react-icons/ti";
+import { FaGithub } from "react-icons/fa";
 
 import avatar from "../../resource/avatar.png";
 
 const icons = [
   {
-    component: TiSocialGithub,
+    component: FaGithub,
     tooltip: "GitHub",
     onClick: () => {}
   },

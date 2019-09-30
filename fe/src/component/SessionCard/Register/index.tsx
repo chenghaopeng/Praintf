@@ -3,10 +3,11 @@ import styles from "../index.module.less";
 
 import { Form, Icon, Input, Button, Row, Col, message } from 'antd';
 import { FormComponentProps } from "antd/lib/form";
-
-import { registerAction, toLogin } from "../../../action/SessionAction";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+
+import { registerAction, toLogin } from "../../../action/SessionAction";
+import * as SessionAPI from "../../../service/SessionAPI";
 
 interface RegisterProps {
   registerAction: Function,
@@ -35,7 +36,7 @@ class Register extends React.Component<FormComponentProps & RegisterProps, any> 
     },
   };
 
-  handleSubmit = (e : FormEvent<HTMLFormElement>) => {
+  handleSubmit = async (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const values = this.props.form.getFieldsValue();
     if (!values.username || !values.nickname || !values.mail || !values.password || !values.repeat) {
@@ -52,6 +53,17 @@ class Register extends React.Component<FormComponentProps & RegisterProps, any> 
         password: values.password,
       };
       this.props.registerAction(body);
+      const hide = message.loading("正在注册...", 0);
+      const res = await SessionAPI.register(body);
+      hide();
+      if (res.code === 0) {
+        this.props.registerAction(res.data);
+        message.success("注册成功！");
+        this.props.toLogin();
+      }
+      else {
+        message.error("该用户名已被注册！");
+      }
     }
   }
 

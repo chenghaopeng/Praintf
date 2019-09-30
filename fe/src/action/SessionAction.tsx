@@ -1,5 +1,3 @@
-import * as SessionAPI from "../service/SessionAPI";
-
 export const SessionActionType = {
   LOGIN: "LOGIN",
   REGISTER: "REGISTER",
@@ -8,27 +6,26 @@ export const SessionActionType = {
   TOREGISTER: "TOREGISTER",
 }
 
-export const loginAction = (body : SessionAPI.loginBody) => async (dispatch : Function) => {
-  const res = await SessionAPI.login(body);
+export const loginAction = (payload : any) => async (dispatch : Function) => {
   dispatch({
     type: SessionActionType.LOGIN,
-    payload: res.data,
+    payload: payload,
   });
+  window.localStorage.session = JSON.stringify(payload);
 }
 
-export const registerAction = (body : SessionAPI.registerBody) => async (dispatch : Function) => {
-  const res = await SessionAPI.register(body);
+export const registerAction = (payload : any) => async (dispatch : Function) => {
   dispatch({
     type: SessionActionType.REGISTER,
-    payload: res.data,
+    payload: payload,
   });
 }
 
-export const logoutAction = (body : SessionAPI.logoutBody) => async (dispatch : Function) => {
-  await SessionAPI.logout(body);
+export const logoutAction = () => async (dispatch : Function) => {
   dispatch({
     type: SessionActionType.LOGOUT,
   });
+  window.localStorage.removeItem("session");
 }
 
 export const toLogin = () => (dispatch : Function) => {
