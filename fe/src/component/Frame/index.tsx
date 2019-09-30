@@ -5,7 +5,7 @@ import { Row, Col } from "antd";
 import HeaderCard from "../HeaderCard";
 import SessionCard from "../SessionCard";
 
-export default function Frame () {
+export default function Frame (props : {WrappedComponent: any}) {
   return (
     <div className={styles.whole}>
       <Row className={styles.container}>
@@ -14,7 +14,7 @@ export default function Frame () {
           <SessionCard/>
         </Col>
         <Col xs={{span: 20, offset: 0}} sm={{span: 20, offset: 2}} md={{span: 15, offset: 1}} className={styles.content}>
-          内容
+          <props.WrappedComponent/>
         </Col>
       </Row>
     </div>
