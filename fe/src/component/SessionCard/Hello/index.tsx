@@ -6,6 +6,7 @@ import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { Button } from "antd";
 
 import { logoutAction } from "../../../action/SessionAction";
+import { logout } from "../../../service/SessionAPI";
 
 interface HelloProps {
   session: any,
@@ -14,6 +15,7 @@ interface HelloProps {
 
 class Hello extends React.Component<HelloProps, any> {
   handleLogout = () => {
+    logout({token: window.localStorage.session.token});
     this.props.logoutAction();
   }
   render() {
