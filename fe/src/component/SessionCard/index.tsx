@@ -21,7 +21,7 @@ class SessionCard extends React.Component<any, SessionCardState> {
   componentWillMount(){
     store.subscribe(() => {
       const newState = store.getState();
-      this.setState(newState.session);
+      this.setState(newState.SessionReducer.session);
     });
   }
 

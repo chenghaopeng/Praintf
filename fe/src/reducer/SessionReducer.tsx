@@ -1,6 +1,6 @@
 import { SessionActionType } from "../action/SessionAction";
 
-const initalState = {
+const initialState = {
   session: {
     loged: 0,
     token: "",
@@ -8,18 +8,18 @@ const initalState = {
   }
 }
 
-const SessionReducer = (state = initalState, action : Action) => {
+const SessionReducer = (state = initialState, action : Action) => {
   switch(action.type) {
     case SessionActionType.LOGIN:
       return {session: {...action.payload, loged: 1}};
     case SessionActionType.REGISTER:
-      return {session: {...initalState.session, loged: -1}};
+      return {session: {...initialState.session, loged: -1}};
     case SessionActionType.LOGOUT:
-      return {session: {...initalState.session, loged: 0}};
+      return {session: {...initialState.session, loged: 0}};
     case SessionActionType.TOLOGIN:
-      return {session: {...initalState.session, loged: 0}};
+      return {session: {...initialState.session, loged: 0}};
     case SessionActionType.TOREGISTER:
-      return {session: {...initalState.session, loged: -1}};
+      return {session: {...initialState.session, loged: -1}};
     default:
       return state;
   }
