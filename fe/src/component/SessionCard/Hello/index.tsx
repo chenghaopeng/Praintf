@@ -35,7 +35,7 @@ class Hello extends React.Component<HelloProps, any> {
 
 const mapStateToProps = (state : any) => {
   return {
-    session: state.session,
+    session: state.SessionReducer.session,
   };
 }
 

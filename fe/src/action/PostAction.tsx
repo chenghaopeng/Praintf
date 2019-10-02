@@ -7,4 +7,4 @@ export const getPostListAction = (payload : any) => (dispatch : Function) => {
     type: PostActionType.POSTLIST,
     payload: payload
   });
-} 
+}
