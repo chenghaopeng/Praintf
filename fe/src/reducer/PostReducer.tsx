@@ -1,7 +1,7 @@
 import { PostActionType } from "../action/PostAction";
 
 const initialState = {
-  postlist: {},
+  postlist: [],
 }
 
 const PostReducer = (state = initialState, action : Action) => {

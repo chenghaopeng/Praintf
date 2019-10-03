@@ -13,7 +13,7 @@ export default function Frame (props : {WrappedComponent: any}) {
           <HeaderCard/>
           <SessionCard/>
         </Col>
-        <Col xs={{span: 20, offset: 0}} sm={{span: 20, offset: 2}} md={{span: 15, offset: 1}} className={styles.content}>
+        <Col xs={{span: 20, offset: 0}} sm={{span: 20, offset: 0}} md={{span: 15, offset: 1}} className={styles.content}>
           <props.WrappedComponent/>
         </Col>
       </Row>

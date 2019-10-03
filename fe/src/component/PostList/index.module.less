@@ -1,7 +1,64 @@
+@import "../../resource/default.module.less";
+
 .whole {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: flex-start;
+
+  padding: 2em 0;
   
+  .postItem {
+    width: 100%;
+    padding: 2em;
+    margin: .5em 0;
+    cursor: pointer;
+    transition: @default-transition;
+
+    .header {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      .title {
+        flex: 1;
+        font-size: 2em;
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
+
+      .time {
+        flex: none;
+      }
+
+      @media all and (max-width: 576px) {
+        .title {
+          flex: none;
+        }
+      }
+    }
+
+    .body {
+      margin-top: 1em;
+    }
+  }
+
+  /*@media all and (min-width: 1200px) {
+    .postItem {
+      width: 49%;
+    }
+  }*/
+
+  .postItem:hover {
+    transform: translateY(-.3em);
+    box-shadow: 0 0 2em 0em rgba(0, 0, 0, .8);
+  }
+
+  .postItem:active {
+    transform: translateY(0);
+  }
 }
