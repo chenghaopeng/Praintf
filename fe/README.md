@@ -1,3 +1,24 @@
+# Praintf 前端
+
+### 主要使用到的东西
+
+1. Typescript
+2. React
+3. Redux
+4. Ant Design
+5. Less
+6. "Learning more..."
+
+### 项目截图
+
+2019.10.03
+
+![截图](screenshot.jpg)
+
+---
+
+# 以下内容由 Create React App 生成
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
