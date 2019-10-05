@@ -6,18 +6,22 @@ import moment from "moment";
 
 import { getPostListAction } from "../../action/PostAction";
 import { getPostList } from "../../service/PostAPI";
+import { RouteComponentProps } from "react-router";
 
 interface PostListProps {
   getPostListAction: Function,
   postlist: any,
 }
 
-class PostList extends React.Component<PostListProps, any> {
+class PostList extends React.Component<PostListProps & RouteComponentProps, any> {
   async componentWillMount() {
     const res = await getPostList();
     if (res.code === 0) {
       this.props.getPostListAction(res.data.post);
     }
+  }
+  showPost = (id : string) => {
+    this.props.history.push("/view/" + id);
   }
   render() {
     return (
